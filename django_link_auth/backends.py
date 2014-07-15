@@ -19,7 +19,7 @@ class LinkBackend(ModelBackend):
                 username=re.sub('[.@]', '-', hash.email)
             )
             user.save()
-        hash.delete()
+        # hash.delete()
         return user
 
 
