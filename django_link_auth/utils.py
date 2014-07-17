@@ -14,6 +14,7 @@ def generate_link(**kwargs):
     key = kwargs.get('key', None)
 
     if email and location:
+        from django_link_auth.models import Hash
         hash = hashlib.md5(email + key + str(time.time())).hexdigest()
         Hash(email=email, hash=hash, next=location).save()
         return True
