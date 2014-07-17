@@ -15,6 +15,8 @@ def generate_link(**kwargs):
         hash = hashlib.md5(email + key + str(time.time())).hexdigest()
         Hash(email=email, hash=hash, next=location).save()
         return True
+    else:
+        return False
 
 
 def delete_hash(hash):
