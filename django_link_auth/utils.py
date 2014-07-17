@@ -3,7 +3,7 @@
 import hashlib
 import time
 import datetime
-from django_link_auth.models import Hash
+
 
 utcnow = lambda: datetime.datetime.utcnow()
 
