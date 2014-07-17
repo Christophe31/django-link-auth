@@ -7,18 +7,18 @@ utcnow = lambda: datetime.datetime.utcnow()
 
 
 def generate_link(**kwargs):
-   email = kwargs.get('email', None)
-   location = kwargs.get('location', '/')
-   key = kwargs.get('key', None)
+    email = kwargs.get('email', None)
+    location = kwargs.get('location', '/')
+    key = kwargs.get('key', None)
 
-   if email and location:
-       hash = hashlib.md5(email + key + str(time.time())).hexdigest()
-       Hash(email=email, hash=hash, next=location).save()
-       return True
+    if email and location:
+        hash = hashlib.md5(email + key + str(time.time())).hexdigest()
+        Hash(email=email, hash=hash, next=location).save()
+        return True
 
 
 def delete_hash(hash):
-   try:
+    try:
        hash = Hash.valid.get(hash=hash)
-   except Hash.DoesNotExist:
+    except Hash.DoesNotExist:
        return None
