@@ -1,6 +1,8 @@
 Simple library to generate authentication link
 ====
 
+Add `'django_link_auth'` in your installed_apps, then add `'django_link_auth.backends.LinkBackend'` in your authentication_backends
+
 * Function to generate link
 
 ```python
