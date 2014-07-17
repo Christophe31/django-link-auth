@@ -34,12 +34,6 @@ class Hash(models.Model):
     valid = ValidHashManager()
     expired = ExpiredHashManager()
 
-    def get_or_none(self, **kwargs):
-        try:
-            return self.objects.get(**kwargs)
-        except self.DoesNotExist:
-            return None
-
     def __unicode__(self):
         return 'Hash for %s' % self.email
 
