@@ -23,8 +23,13 @@ def generate_link(**kwargs):
 
 
 def delete_hash(hash):
+
     from django_link_auth.models import Hash
+    
     try:
        hash = Hash.valid.get(hash=hash)
     except Hash.DoesNotExist:
        return None
+
+    if hash:
+        hash.delete()
