@@ -3,3 +3,4 @@
 *.egg-info
 ide.session
 /.idea/
+django_link_auth/.idea/
