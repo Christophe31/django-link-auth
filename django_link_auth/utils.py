@@ -10,26 +10,26 @@ utcnow = lambda: datetime.datetime.utcnow()
 
 def generate_link(**kwargs):
     email = kwargs.get('email', None)
-    location = kwargs.get('location', '/')
+    location = kwargs.get('next', '/')
     key = kwargs.get('key', None)
 
     if email and location:
         from django_link_auth.models import Hash
         hash = hashlib.md5(email + key + str(time.time())).hexdigest()
-        Hash(email=email, hash=hash, next=location).save()
-        return True
+        h = Hash(email=email, hash=hash, next=location).save()
+        return h
     else:
-        return False
+        return None
 
 
 def delete_hash(hash):
 
     from django_link_auth.models import Hash
-    
+
     try:
-       hash = Hash.valid.get(hash=hash)
+        hash = Hash.valid.get(hash=hash)
     except Hash.DoesNotExist:
-       return None
+        return None
 
     if hash:
         hash.delete()
