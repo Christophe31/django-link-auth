@@ -17,9 +17,7 @@ def generate_link(**kwargs):
         from django_link_auth.models import Hash
         hash = hashlib.md5(email + key + str(time.time())).hexdigest()
         h = Hash(email=email, hash=hash, next=location).save()
-        return h
-    else:
-        return None
+        return h.next
 
 
 def delete_hash(hash):
