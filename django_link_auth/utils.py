@@ -21,7 +21,7 @@ def generate_link(**kwargs):
         h.hash = hash
         h.next = location
         h.save()
-        return h.next
+        return h
 
 
 def delete_hash(hash):
