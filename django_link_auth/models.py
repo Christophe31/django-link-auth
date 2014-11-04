@@ -28,7 +28,7 @@ class Hash(models.Model):
     created_at = models.DateTimeField(
         _('Date and time'),
         editable=False,
-        default=lambda: utcnow(),
+        default=datetime.datetime.utcnow(),
     )
 
     valid = ValidHashManager()
