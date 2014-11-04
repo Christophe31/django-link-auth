@@ -24,7 +24,7 @@ class ExpiredHashManager(models.Manager):
 class Hash(models.Model):
     email = models.CharField( _('Email'), max_length = 40)
     hash = models.CharField(_('Hash'), max_length=32)
-    next = models.CharField(_('Next'), max_length=255)
+    next = models.TextField(_('Next'))
     created_at = models.DateTimeField(
         _('Date and time'),
         editable=False,
