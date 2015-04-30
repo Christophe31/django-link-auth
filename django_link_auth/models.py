@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django_link_auth.settings import AUTH_LINK_LIFETIME
 from django_link_auth.utils import utcnow
+from django.utils.timezone import now
 
 
 class ValidHashManager(models.Manager):
@@ -28,7 +29,7 @@ class Hash(models.Model):
     created_at = models.DateTimeField(
         _('Date and time'),
         editable=False,
-        default=datetime.datetime.utcnow(),
+        default=now(),
     )
 
     valid = ValidHashManager()
