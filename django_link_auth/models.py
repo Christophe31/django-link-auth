@@ -29,7 +29,7 @@ class Hash(models.Model):
     created_at = models.DateTimeField(
         _('Date and time'),
         editable=False,
-        default=now(),
+        auto_now_add=True,
     )
 
     valid = ValidHashManager()
