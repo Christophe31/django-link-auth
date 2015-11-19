@@ -8,7 +8,7 @@ from django.utils.timezone import now
 class ValidHashManager(models.Manager):
     def get_queryset(self):
         return super(ValidHashManager, self) \
-            .get_query_set().filter(
+            .get_queryset().filter(
                 created_at__gte=now() - datetime.timedelta(0, AUTH_LINK_LIFETIME)
             )
 
@@ -16,7 +16,7 @@ class ValidHashManager(models.Manager):
 class ExpiredHashManager(models.Manager):
     def get_queryset(self):
         return super(ExpiredHashManager, self) \
-            .get_query_set().filter(
+            .get_queryset().filter(
                 created_at__lt=now() - datetime.timedelta(0, AUTH_LINK_LIFETIME)
             )
 
